@@ -25,11 +25,11 @@ func main() {
 	db.InitXorm()
 	e := echo.New()
 	//日志
-	//logFile, err := os.OpenFile("logs/music.log", os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
-	//if err != nil {
-	//	panic("log file can't init")
-	//}
-	logFile := os.Stdout
+	logFile, err := os.OpenFile("logs/music.log", os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil {
+		panic("log file can't init")
+	}
+	//logFile := os.Stdout
 
 	defer logFile.Close()
 	e.Logger.SetOutput(logFile)
